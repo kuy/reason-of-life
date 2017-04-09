@@ -1,7 +1,5 @@
 'use strict';
 
-var webpack = require('webpack');
-
 module.exports = {
   entry: './src/index.re',
   module: {
@@ -15,6 +13,7 @@ module.exports = {
   },
   output: {
     path: __dirname + '/public',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/in-memory'
   }
 };

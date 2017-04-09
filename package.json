@@ -3,7 +3,7 @@
   "private": true,
   "description": "",
   "scripts": {
-    "start": "node_modules/.bin/webpack -w",
+    "start": "node_modules/.bin/webpack-dev-server --watch --progress --content-base public/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,7 +11,8 @@
   "devDependencies": {
     "bs-loader": "^1.1.2",
     "bs-platform": "^1.6.0",
-    "webpack": "^2.3.3"
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
     "react": "^15.5.3",
