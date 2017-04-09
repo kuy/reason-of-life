@@ -1,0 +1,22 @@
+{
+  "name": "reason-sandbox",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "start": "node_modules/.bin/webpack -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "bs-loader": "^1.1.2",
+    "bs-platform": "^1.6.0",
+    "webpack": "^2.3.3"
+  },
+  "dependencies": {
+    "react": "^15.5.3",
+    "react-dom": "^15.5.3",
+    "reason-js": "^0.3.0",
+    "reason-react": "^0.1.0"
+  }
+}

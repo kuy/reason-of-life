@@ -1,0 +1,7 @@
+.DS_Store
+.merlin
+/node_modules/
+/lib/
+/public/*.js
+npm-debug.log
+/_build/

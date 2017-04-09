@@ -1,0 +1,15 @@
+{
+  "name" : "reason-sandbox",
+  "reason" : {
+    "react-jsx": true
+  },
+  "bs-dependencies": [
+    "reason-react"
+  ],
+  "bs-dev-dependencies": [
+    "reason-js"
+  ],
+  "sources": [
+    "src"
+  ]
+}
