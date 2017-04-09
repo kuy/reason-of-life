@@ -1,11 +1,9 @@
-    /* <Board data=[[1, 0], [0, 1]] />; */
-
 module Page = {
   include ReactRe.Component;
   type props = unit;
   let name = "Page";
   let render { props, updater } =>
-    <Board data=[0,1,2,3,4] />;
+    <Board data=[[1, 1, 0], [1, 0, 0], [0, 0, 0]] />;
 };
 
 include ReactRe.CreateComponent Page;

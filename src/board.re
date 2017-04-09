@@ -1,19 +1,22 @@
 module Board = {
   include ReactRe.Component;
-  /* type boardData = list list int; */
-  type boardData = list int;
+  type rowData = list int;
+  type boardData = list rowData;
   type props = { data: boardData };
   let name = "Board";
+  let renderRow data =>
+    data
+    |> List.map (fun s => <td>(ReactRe.stringToElement (string_of_int s))</td>)
+    |> Array.of_list
+    |> ReactRe.arrayToElement;
   let render { props, updater } => {
-    let row =
+    let board =
       props.data
-      |> List.map (fun s => <td>(ReactRe.stringToElement (string_of_int s))</td>)
+      |> List.map (fun d => <tr>(renderRow d)</tr>)
       |> Array.of_list
       |> ReactRe.arrayToElement;
     <table>
-      <tbody>
-        <tr>(row)</tr>
-      </tbody>
+      <tbody>(board)</tbody>
     </table>
   };
 };
