@@ -1,17 +1,20 @@
 module Board = {
-  include ReactRe.Component;
+  include ReactRe.Component.Stateful;
   type rowData = list int;
   type boardData = list rowData;
-  type props = { data: boardData };
+  type props = unit;
+  type state = { data: boardData };
   let name = "Board";
+  let getInitialState _ /* props */ =>
+    { data: [[1, 1, 0], [1, 0, 0], [0, 0, 0]] };
   let renderRow data =>
     data
     |> List.map (fun s => <td>(ReactRe.stringToElement (string_of_int s))</td>)
     |> Array.of_list
     |> ReactRe.arrayToElement;
-  let render { props, updater } => {
+  let render { state, updater } => {
     let board =
-      props.data
+      state.data
       |> List.map (fun d => <tr>(renderRow d)</tr>)
       |> Array.of_list
       |> ReactRe.arrayToElement;
@@ -23,4 +26,4 @@ module Board = {
 
 include ReactRe.CreateComponent Board;
 
-let createElement ::data => wrapProps { data: data };
+let createElement = wrapProps ();
