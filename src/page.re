@@ -1,15 +1,13 @@
+    /* <Board data=[[1, 0], [0, 1]] />; */
+
 module Page = {
   include ReactRe.Component;
-  type props = { answer: int };
+  type props = unit;
   let name = "Page";
-  let handleClick _ _ => {
-    Js.log "answer";
-    None
-  };
   let render { props, updater } =>
-    <div onClick=(updater handleClick)> (ReactRe.stringToElement (string_of_int props.answer)) </div>;
+    <Board data=[0,1,2,3,4] />;
 };
 
 include ReactRe.CreateComponent Page;
 
-let createElement ::answer => wrapProps { answer: answer };
+let createElement = wrapProps ();

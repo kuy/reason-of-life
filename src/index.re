@@ -1,1 +1,1 @@
-ReactDOMRe.renderToElementWithId <Page answer={Fib.fib 10} /> "container";
+ReactDOMRe.renderToElementWithId <Page /> "container";
