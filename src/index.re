@@ -1,3 +1,1 @@
-Js.log (Fib.fib 10);
-
-let elem = <div />;
+ReactDOMRe.renderToElementWithId <Page answer={Fib.fib 10} /> "container";
