@@ -4,13 +4,13 @@
   "description": "",
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server --content-base public/",
-    "build": "node_modules/.bin/webpack --watch --progress",
+    "build": "node_modules/.bin/webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "bs-loader": "^1.1.2",
+    "bs-loader": "https://github.com/kuy/bs-loader",
     "bs-platform": "^1.6.0",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
