@@ -15,21 +15,22 @@ module Page = {
         [0, 0, 0, 0, 0]
       ]
     };
-  let rec handleTimeout { handler, state } _ => {
-    if (not state.pause) {
-      Js.log "Timeout";
-    };
-    Js.Global.setTimeout (handler handleTimeout) 1000;
-    ()
-  };
-  let componentDidMount { handler, state } => {
-    Js.Global.setTimeout (handler handleTimeout) 1000;
-    None
-  };
   let handleTick { state } _ =>
     Some { ...state, time: state.time + 1, data: Board.next state.data };
   let handlePause { state } _ =>
     Some { ...state, pause: not state.pause };
+  let rec handleTimeout { updater, state } _ => {
+    Js.Global.setTimeout (updater handleTimeout) 1000;
+    if (not state.pause) {
+      Some { ...state, time: state.time + 1, data: Board.next state.data }
+    } else {
+      None
+    }
+  };
+  let componentDidMount { updater, state } => {
+    Js.Global.setTimeout (updater handleTimeout) 1000;
+    None
+  };
   let render { state, updater } => {
     <div>
       <Board data=state.data />
