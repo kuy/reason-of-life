@@ -1,5 +1,7 @@
 'use strict';
 
+var webpack = require('webpack');
+
 module.exports = {
   entry: './src/index.re',
   module: {
@@ -17,5 +19,12 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/in-memory'
   },
-  watch: true
+  plugins: (process.env.NODE_ENV === 'production') ? [
+    new webpack.DefinePlugin({
+      'process.env': { NODE_ENV: JSON.stringify('production') }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+    })
+  ] : []
 };

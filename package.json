@@ -1,13 +1,14 @@
 {
   "name": "reason-of-life",
   "private": true,
-  "description": "",
+  "description": "Conway's Lifegame in Reason + reason-react with webpack + bs-loader.",
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server --content-base public/",
-    "build": "node_modules/.bin/webpack --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "NODE_ENV=production node_modules/.bin/webpack"
   },
-  "author": "",
+  "authors": [
+    "Yuki Kodama <endflow.net@gmail.com>"
+  ],
   "license": "MIT",
   "devDependencies": {
     "bs-loader": "^1.2.0",
