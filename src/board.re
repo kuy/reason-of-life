@@ -74,7 +74,7 @@ module Board = {
     |> List.map (fun l => <td className=(Life.to_name l)>(ReactRe.stringToElement (Life.to_string l))</td>)
     |> Array.of_list
     |> ReactRe.arrayToElement;
-  let render { props, updater } => {
+  let render { props } => {
     let board =
       props.data
       |> List.map (fun d => <tr>(renderRow d)</tr>)

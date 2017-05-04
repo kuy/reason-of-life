@@ -1,12 +1,10 @@
-open Life;
-
 module Page = {
   include ReactRe.Component.Stateful;
   type props = unit;
-  type state = { time: int, pause: bool, data: Board.t };
+  type state = { gen: int, pause: bool, data: Board.t };
   let name = "Page";
   let getInitialState _ =>
-    { time: 0, pause: true, data:
+    { gen: 0, pause: true, data:
       Board.of_matrix [
         [0, 1, 0, 0, 0],
         [0, 0, 1, 0, 0],
@@ -16,13 +14,13 @@ module Page = {
       ]
     };
   let handleTick { state } _ =>
-    Some { ...state, time: state.time + 1, data: Board.next state.data };
+    Some { ...state, gen: state.gen + 1, data: Board.next state.data };
   let handlePause { state } _ =>
     Some { ...state, pause: not state.pause };
   let rec handleTimeout { updater, state } _ => {
     Js.Global.setTimeout (updater handleTimeout) 1000;
     if (not state.pause) {
-      Some { ...state, time: state.time + 1, data: Board.next state.data }
+      Some { ...state, gen: state.gen + 1, data: Board.next state.data }
     } else {
       None
     }
@@ -33,15 +31,21 @@ module Page = {
   };
   let render { state, updater } => {
     <div>
-      <Board data=state.data />
-      <div>
-        <button onClick=(updater handleTick)>(ReactRe.stringToElement "Tick")</button>
-        (ReactRe.stringToElement ("Tick: " ^ (string_of_int state.time)))
-      </div>
-      <div>
-        <button onClick=(updater handlePause)>(ReactRe.stringToElement (state.pause ? "Resume" : "Pause"))</button>
-        (ReactRe.stringToElement ("Timer: " ^ (state.pause ? "Paused" : "Running")))
-      </div>
+      <Flexbox>
+        <Board data=state.data />
+        <Flexbox dir=(Flexbox.Column)>
+          <div>
+            (ReactRe.stringToElement ("Generation: " ^ (string_of_int state.gen)))
+          </div>
+          <div>
+            (ReactRe.stringToElement ("Timer: " ^ (state.pause ? "Paused" : "Running")))
+          </div>
+          <div>
+            <button onClick=(updater handleTick)>(ReactRe.stringToElement "Tick")</button>
+            <button onClick=(updater handlePause)>(ReactRe.stringToElement (state.pause ? "Resume" : "Pause"))</button>
+          </div>
+        </Flexbox>
+      </Flexbox>
     </div>
   };
 };
