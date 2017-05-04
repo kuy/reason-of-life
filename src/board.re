@@ -62,6 +62,27 @@ let next_cell data x y =>
 let next data =>
   List.mapi (fun y r => List.mapi (fun x _ => next_cell data x y) r) data;
 
+type size = (int, int);
+
+let to_size data => {
+  let h = List.length data;
+  let w = List.length @@ List.nth data 0;
+  (w, h)
+};
+
+let populate n => {
+  let rec loop acc n =>
+    switch n {
+      | 0 => acc
+      | n => loop [0, ...acc] (n - 1)
+    };
+  loop [] n
+};
+
+let random_int n => Js.Math.floor ((Js.Math.random ()) *. (float_of_int n));
+let random_row w => List.map (fun _ => random_int 2) (populate w);
+let random (w, h) => List.map (fun _ => random_row w) (populate h);
+
 let of_matrix src =>
   List.map (fun r => List.map (fun c => Life.of_int c) r) src;
 

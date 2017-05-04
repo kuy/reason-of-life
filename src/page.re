@@ -17,6 +17,8 @@ module Page = {
     Some { ...state, gen: state.gen + 1, data: Board.next state.data };
   let handlePause { state } _ =>
     Some { ...state, pause: not state.pause };
+  let handleRandom { state } _ =>
+    Some { ...state, gen: 0, data: Board.(to_size state.data |> random |> of_matrix) };
   let rec handleTimeout { updater, state } _ => {
     Js.Global.setTimeout (updater handleTimeout) 1000;
     if (not state.pause) {
@@ -43,6 +45,7 @@ module Page = {
           <div>
             <button onClick=(updater handleTick)>(ReactRe.stringToElement "Tick")</button>
             <button onClick=(updater handlePause)>(ReactRe.stringToElement (state.pause ? "Resume" : "Pause"))</button>
+            <button onClick=(updater handleRandom)>(ReactRe.stringToElement "Random")</button>
           </div>
         </Flexbox>
       </Flexbox>
