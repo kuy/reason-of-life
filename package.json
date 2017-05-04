@@ -10,15 +10,16 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "bs-loader": "https://github.com/kuy/bs-loader",
-    "bs-platform": "^1.6.0",
-    "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.4.2"
+    "bs-loader": "^1.2.0",
+    "bs-platform": "^1.7.0",
+    "glamor": "^2.20.24",
+    "webpack": "^2.4.0",
+    "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
-    "react": "^15.5.3",
-    "react-dom": "^15.5.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "reason-js": "^0.3.0",
-    "reason-react": "^0.1.0"
+    "reason-react": "^0.1.3"
   }
 }
