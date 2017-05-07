@@ -24,3 +24,11 @@ Open `localhost:8080` in your browser.
 ```
 $ npm run build
 ```
+
+### License
+
+MIT
+
+### Author
+
+Yuki Kodama / [@kuy](https://twitter.com/kuy)
