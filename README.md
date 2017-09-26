@@ -1,6 +1,6 @@
 ## reason-of-life
 
-Conway's Lifegame in [Reason](http://facebook.github.io/reason) + [reason-react](https://github.com/reasonml/reason-react) with [webpack](https://webpack.js.org/) + [bs-loader](https://github.com/rrdelaney/bs-loader).
+Conway's Lifegame in [Reason](https://reasonml.github.io/) + [reason-react](https://github.com/reasonml/reason-react) with [webpack](https://webpack.js.org/) + [bs-loader](https://github.com/rrdelaney/bs-loader).
 
 ### Demo
 
